@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:fango/tools/tools.dart';
+import 'package:venty/tools/tools.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget{
+  @override
+  _LoginViewState createState() => new _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  String _email, _password;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -33,12 +41,21 @@ class LoginView extends StatelessWidget {
                   new SizedBox(
                     height: 40.0,
                   ),
-                  Padding(
+                  new Form(
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 50.0, vertical: 20.0),
-                      child: new TextField(
+                      child: new TextFormField(
+                        validator: (input){
+                          if(input.isEmpty){
+                            return 'Please fill E-Mail field';
+                          }
+                        },
+                        onSaved: (input) => _email = input,
                         decoration: new InputDecoration(
-                            labelText: "Login or E-Mail",
+                            labelText: "E-Mail",
                             labelStyle: TextStyle(
                                 color: Color.fromARGB(180, 103, 107, 115),
                                 fontFamily: "Segoe UI",
@@ -55,7 +72,13 @@ class LoginView extends StatelessWidget {
                   Padding(
                       padding: const EdgeInsets.only(
                           left: 50.0, right: 50.0, top: 20.0),
-                      child: new TextField(
+                      child: new TextFormField(
+                        validator: (input){
+                          if(input.isEmpty){
+                            return 'Please fill Password field';
+                          }
+                        },
+                        onSaved: (input) => _password = input,
                         obscureText: true,
                         decoration: new InputDecoration(
                             labelText: "Password",
@@ -72,6 +95,9 @@ class LoginView extends StatelessWidget {
                                     color:
                                         Color.fromARGB(180, 103, 107, 115)))),
                       )),
+                      ],
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40.0, vertical: 0.0),

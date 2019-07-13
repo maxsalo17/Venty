@@ -1,6 +1,6 @@
 import 'package:venty/ventywidgets/ventywidgets.dart';
 import 'package:flutter/material.dart';
-
+import 'package:venty/ventywidgets/carousel_slider.dart';
 
 class Profile extends StatelessWidget {
   @override
