@@ -19,7 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  carousel_slider: ^1.3.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -39,6 +39,27 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  
+  fonts:
+    - family: Segoe UI
+      fonts:
+        - asset: assets/fonts/segoeuiregular.ttf
+        - asset: assets/fonts/segoeuibold.ttf
+          weight: 700
+        - asset: assets/fonts/segoeuilight.ttf
+          weight: 100
+        - asset: assets/fonts/segoeuisemibold.ttf
+          weight: 600
+        - asset: assets/fonts/segoeuisemilight.ttf
+          weight: 200
+    
+  assets: 
+   - images/Background.jpg
+   - images/FacebookButton.png
+   - images/FacebookIcon.png
+   - images/FangoLogo.png
+   - images/GoogleButton.png
+   - images/GoogleIcon.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
