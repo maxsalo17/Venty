@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venty/ventywidgets/textfield.dart';
 
 class RegisterView extends StatelessWidget {
   void dodo() {}
@@ -15,6 +16,7 @@ class RegisterView extends StatelessWidget {
                       backgroundColor: Colors.transparent,
                       elevation: 0.0,
                       foregroundColor: Color.fromRGBO(49, 40, 56, 0.8),
+                      highlightElevation: 0,
                       
                       onPressed: () => Navigator.of(context).pushNamed('/login'),
                     ),
@@ -36,9 +38,12 @@ class RegisterView extends StatelessWidget {
                   new SizedBox(
                     height: 40.0,
                   ),
-                  new Image(
-                    image: new AssetImage("images/FangoLogo.png"),
-                    width: 100.0,
+                  Container(
+                    height: 40,
+                    child: new Image(
+                      image: new AssetImage("images/VentyMainLogo.png"),
+                      
+                    ),
                   ),
                   new SizedBox(
                     height: MediaQuery.of(context).size.height*0.1,
@@ -57,82 +62,19 @@ class RegisterView extends StatelessWidget {
                   Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 50.0, vertical: 20.0),
-                      child: new TextField(
-                        decoration: new InputDecoration(
-                            labelText: "Login",
-                            labelStyle: TextStyle(
-                                color: Color.fromARGB(180, 103, 107, 115),
-                                fontFamily: "Segoe UI",
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal),
-                            contentPadding:
-                                const EdgeInsets.only(left: 2.0, bottom: 4.0),
-                            enabledBorder: new UnderlineInputBorder(
-                                borderSide: new BorderSide(
-                              width: 1.5,
-                              color: Color.fromARGB(180, 103, 107, 115),
-                            ))),
-                      )),
+                      child: VentyTextField(hintText: 'Login', isPassword: false, )),
                   Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 50.0, vertical: 20.0),
-                      child: new TextField(
-                        obscureText: true,
-                        decoration: new InputDecoration(
-                            labelText: "Password",
-                            labelStyle: TextStyle(
-                                color: Color.fromARGB(180, 103, 107, 115),
-                                fontFamily: "Segoe UI",
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal),
-                            contentPadding:
-                                const EdgeInsets.only(left: 2.0, bottom: 4.0),
-                            enabledBorder: new UnderlineInputBorder(
-                                borderSide: new BorderSide(
-                              width: 1.5,
-                              color: Color.fromARGB(180, 103, 107, 115),
-                            ))),
-                      )),
+                      child: VentyTextField(hintText: 'Password', isPassword: true,)),
                   Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 50.0, vertical: 20.0),
-                      child: new TextField(
-                        obscureText: true,
-                        decoration: new InputDecoration(
-                            labelText: "Confirm password",
-                            labelStyle: TextStyle(
-                                color: Color.fromARGB(180, 103, 107, 115),
-                                fontFamily: "Segoe UI",
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal),
-                            contentPadding:
-                                const EdgeInsets.only(left: 2.0, bottom: 4.0),
-                            enabledBorder: new UnderlineInputBorder(
-                                borderSide: new BorderSide(
-                              width: 1.5,
-                              color: Color.fromARGB(180, 103, 107, 115),
-                            ))),
-                      )),
+                      child: VentyTextField(hintText: 'Confirm Password', isPassword: true,)),
                   Padding(
                       padding: const EdgeInsets.only(
                           left: 50.0, right: 50.0, top: 20.0),
-                      child: new TextField(
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: new InputDecoration(
-                            labelText: "E-Mail",
-                            labelStyle: TextStyle(
-                                color: Color.fromARGB(180, 103, 107, 115),
-                                fontFamily: "Segoe UI",
-                                fontSize: 15,
-                                fontWeight: FontWeight.normal),
-                            contentPadding:
-                                const EdgeInsets.only(left: 2.0, bottom: 4.0),
-                            enabledBorder: new UnderlineInputBorder(
-                                borderSide: new BorderSide(
-                                    width: 1.5,
-                                    color:
-                                        Color.fromARGB(180, 103, 107, 115)))),
-                      )),
+                      child: VentyTextField(hintText: 'E-Mail', isPassword: false,)),
                   new SizedBox(height: 40.0),
                   new Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -145,8 +87,8 @@ class RegisterView extends StatelessWidget {
                           decoration: new BoxDecoration(
                             gradient: new LinearGradient(
                               colors: [
-                                Color.fromRGBO(106, 0, 150, 1),
-                                Color.fromRGBO(160, 0, 220, 1)
+                                Color.fromRGBO(255, 79, 85, 1),
+                                        Color.fromRGBO(148, 39, 41, 1)
                               ],
                               begin: FractionalOffset.centerRight,
                               end: FractionalOffset.centerLeft,

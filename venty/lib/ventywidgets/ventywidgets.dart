@@ -83,7 +83,9 @@ class PopUp extends StatelessWidget{
                 ),
                 
               ),
-              onPressed: (){},
+              onPressed: (){
+                Navigator.pop(context);
+              },
             )
           ],
         ),
