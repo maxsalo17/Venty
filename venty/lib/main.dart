@@ -1,8 +1,7 @@
-import 'package:venty/profileview/profileview.dart';
 import 'package:flutter/material.dart';
 import 'package:venty/tools/theme.dart';
-import 'loginview/loginview.dart';
-import 'loginview/registerview.dart';
+import 'pages/loginview/loginview.dart';
+import 'pages/loginview/registerview.dart';
 import 'package:flutter/services.dart';
 
 

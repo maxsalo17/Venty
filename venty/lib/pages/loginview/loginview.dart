@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:venty/bloc/authenticationBloc.dart';
 import 'package:venty/tools/theme.dart';
 import 'package:venty/tools/tools.dart';
+import 'package:venty/ventywidgets/textfield.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -10,14 +12,47 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   String _email, _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  AuthenticationBloc bloc = AuthenticationBloc();
 
   bool _isHidden = true;
+  bool _isBusy = false;
 
-  _toggleHidden(){
+  _toggleHidden() {
     setState(() {
-          _isHidden=!_isHidden;
-        });
-    
+      _isHidden = !_isHidden;
+    });
+  }
+
+  authorize() {
+    setBusy(true);
+    bloc.autorize(onSuccess: () {
+      setBusy(false);
+    }, onError: () {
+      setBusy(false);
+    });
+  }
+
+  setBusy(bool) {
+    setState(() {
+      _isBusy = bool;
+    });
+  }
+
+ Widget _buildLoadingWidget() {
+    return Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(color: Colors.black87),
+        child: Center(
+            child: SizedBox(width: 60.0, height: 60.0,
+                          child: Theme(
+                data: ThemeData(primarySwatch: Colors.red),
+                            child: CircularProgressIndicator(
+          backgroundColor: Colors.white,
+          strokeWidth: 3.0,
+        ),
+              ),
+            )));
   }
 
   @override
@@ -51,81 +86,38 @@ class _LoginViewState extends State<LoginView> {
                         new Form(
                           child: Theme(
                             data: new ThemeData(
-                              primaryColor: VentyColors.primaryRed.withOpacity(0.5),
-                              primaryColorDark: VentyColors.primaryRed.withOpacity(0.5),
-                              splashColor: Colors.white70
-                            ),
+                                primaryColor:
+                                    VentyColors.primaryRed.withOpacity(0.5),
+                                primaryColorDark:
+                                    VentyColors.primaryRed.withOpacity(0.5),
+                                splashColor: Colors.white70),
                             child: Column(
                               children: <Widget>[
                                 Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 50.0, vertical: 20.0),
-                                    child: new TextFormField(
-                                      validator: (input) {
-                                        if (input.isEmpty) {
-                                          return 'Please fill E-Mail field';
-                                        }
-                                      },
-                                      onSaved: (input) => _email = input,
-                                      decoration: new InputDecoration(
-                                        fillColor: Colors.white.withOpacity(0.3),
-                                        filled: true,
-                                      enabledBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(32.0),
-                                                borderSide: BorderSide(color: Colors.transparent)
-                                        ),
-                                        hintText: 'E-Mail',
-                                        hintStyle: TextStyle(
-                                            color: Color.fromARGB(
-                                                180, 103, 107, 115),
-                                            fontFamily: "Segoe UI",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.normal),
-                                        contentPadding: EdgeInsets.fromLTRB(
-                                            20.0, 15.0, 20.0, 15.0),
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(32.0),
-                                                
-                                        ),
-                                        
-                                      ),
-                                    )),
+                                    child: StreamBuilder<String>(
+                                        stream: bloc.email,
+                                        builder: (context, snapshot) {
+                                          return new VentyTextField(
+                                            isPassword: false,
+                                            onChanged: bloc.emailValue,
+                                            hintText: "E-Mail",
+                                            errorText: snapshot.error,
+                                          );
+                                        })),
                                 Padding(
                                     padding: const EdgeInsets.only(
                                         left: 50.0, right: 50.0, top: 20.0),
-                                    child: new TextFormField(
-                                      validator: (input) {
-                                        if (input.isEmpty) {
-                                          return 'Please fill Password field';
-                                        }
-                                      },
-                                      onSaved: (input) => _password = input,
-                                      obscureText: _isHidden,
-                                      decoration: new InputDecoration(
-                                         fillColor: Colors.white.withOpacity(0.3),
-                                        filled: true,
-                                        enabledBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(32.0),
-                                                borderSide: BorderSide(color: Colors.transparent)
-                                        ),
-                                        suffixIcon: IconButton(icon: Icon(Icons.visibility), onPressed: _toggleHidden,),
-                                        hintText: 'Password',
-                                        hintStyle: TextStyle(
-                                            color: Color.fromARGB(
-                                                180, 103, 107, 115),
-                                            fontFamily: "Segoe UI",
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.normal),
-                                        contentPadding: EdgeInsets.fromLTRB(
-                                            20.0, 15.0, 20.0, 15.0),
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(32.0)),
-                                      ),
-                                    )),
+                                    child: StreamBuilder<Object>(
+                                        stream: bloc.password,
+                                        builder: (context, snapshot) {
+                                          return new VentyTextField(
+                                              isPassword: true,
+                                              onChanged: bloc.passwordValue,
+                                              hintText: "Password",
+                                              errorText: snapshot.error,);
+                                        })),
                               ],
                             ),
                           ),
@@ -174,16 +166,19 @@ class _LoginViewState extends State<LoginView> {
                                       end: FractionalOffset.centerLeft,
                                     ),
                                   ),
-                                  child: new FlatButton(
-                                      child: new Text('LOGIN',
-                                          style: TextStyle(
-                                              color: Colors.white70,
-                                              fontSize: 16,
-                                              fontFamily: "Segoe UI",
-                                              fontWeight: FontWeight.w200)),
-                                      onPressed: () {
-                                        print('Clicked');
-                                      }),
+                                  child: Theme(
+                                    data: ThemeData(
+                                        primaryColor: Colors.grey,
+                                        primarySwatch: Colors.grey),
+                                    child: new FlatButton(
+                                        child: new Text('LOGIN',
+                                            style: TextStyle(
+                                                color: Colors.white70,
+                                                fontSize: 16,
+                                                fontFamily: "Segoe UI",
+                                                fontWeight: FontWeight.w200)),
+                                        onPressed: authorize),
+                                  ),
                                 ),
                               ),
                             ),
@@ -206,7 +201,7 @@ class _LoginViewState extends State<LoginView> {
                                               fontFamily: "Segoe UI",
                                               fontWeight: FontWeight.normal)),
                                       onPressed: () => Navigator.of(context)
-                                          .pushNamed('/register')),
+                                          .popAndPushNamed('/register')),
                                 ),
                               ),
                             )
@@ -300,7 +295,13 @@ class _LoginViewState extends State<LoginView> {
                         ],
                       ),
                     ),
-                  ),
+                  ),                  
+                  StreamBuilder<bool>(
+                    stream: bloc.progress,
+                    builder: (context, snapshot) {
+                      return snapshot.hasData?(snapshot.data? _buildLoadingWidget():SizedBox(height: 0,)):SizedBox(height: 0,);
+                    }
+                  )
                 ],
               )),
         ));

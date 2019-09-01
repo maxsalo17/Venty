@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:venty/tools/theme.dart';
 
 class VentyTextField extends StatefulWidget {
-  Function(String) onSaved;
+  Function(String) onChanged;
   bool isPassword;
   String hintText;
-  VentyTextField({this.isPassword, this.onSaved, this.hintText});
+  String errorText;
+  VentyTextField({this.isPassword, this.onChanged, this.hintText, this.errorText});
   @override
   _VentyTextFieldState createState() => _VentyTextFieldState();
 }
@@ -34,8 +35,8 @@ class _VentyTextFieldState extends State<VentyTextField> {
                               primaryColorDark: VentyColors.primaryRed.withOpacity(0.5),
                               splashColor: Colors.white70
                             ),
-          child: new TextFormField(
-                                        onSaved: widget.onSaved,
+          child: new TextField(
+                                        onChanged: widget.onChanged,
                                         obscureText: _isHidden,
                                         decoration: new InputDecoration(
                                            fillColor: Colors.white.withOpacity(0.3),
@@ -47,6 +48,7 @@ class _VentyTextFieldState extends State<VentyTextField> {
                                           ),
                                           suffixIcon: widget.isPassword?IconButton(icon: Icon(Icons.visibility), onPressed: _toggleHidden,):null,
                                           hintText: widget.hintText,
+                                          errorText: widget.errorText,
                                           hintStyle: TextStyle(
                                               color: Color.fromARGB(
                                                   180, 103, 107, 115),
