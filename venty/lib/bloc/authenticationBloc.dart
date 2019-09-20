@@ -48,7 +48,6 @@ class AuthenticationBloc {
       setInProgress(true);
       UserRepository api = UserRepository();
       User user = await api.tryAuthorize(userAuthentication);
-      print(user.uid);
       if (user != null) {
         onSuccess != null ? onSuccess() : () {};
       } else {

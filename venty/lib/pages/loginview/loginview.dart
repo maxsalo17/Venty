@@ -10,7 +10,6 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  String _email, _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AuthenticationBloc bloc = AuthenticationBloc();
 
@@ -27,6 +26,7 @@ class _LoginViewState extends State<LoginView> {
     setBusy(true);
     bloc.autorize(onSuccess: () {
       setBusy(false);
+      Navigator.pushReplacementNamed(context, '/profile');
     }, onError: () {
       setBusy(false);
     });
@@ -78,7 +78,7 @@ class _LoginViewState extends State<LoginView> {
                       children: <Widget>[
                         new Image(
                           image: new AssetImage("images/VentyMainLogo.png"),
-                          width: MediaQuery.of(context).size.width * 0.4,
+                          width: MediaQuery.of(context).size.width * 0.3,
                         ),
                         new SizedBox(
                           height: 20.0,
@@ -174,7 +174,7 @@ class _LoginViewState extends State<LoginView> {
                                         child: new Text('LOGIN',
                                             style: TextStyle(
                                                 color: Colors.white70,
-                                                fontSize: 16,
+                                                fontSize: 14,
                                                 fontFamily: "Segoe UI",
                                                 fontWeight: FontWeight.w200)),
                                         onPressed: authorize),
@@ -197,7 +197,7 @@ class _LoginViewState extends State<LoginView> {
                                           style: TextStyle(
                                               color:
                                                   Color.fromRGBO(49, 40, 56, 1),
-                                              fontSize: 16,
+                                              fontSize: 14,
                                               fontFamily: "Segoe UI",
                                               fontWeight: FontWeight.normal)),
                                       onPressed: () => Navigator.of(context)
@@ -243,12 +243,12 @@ class _LoginViewState extends State<LoginView> {
                                       fit: BoxFit.cover,
                                       width: new Limiter().minMaxLimit(
                                           MediaQuery.of(context).size.width *
-                                              0.15,
+                                              0.10,
                                           40.0,
                                           70.0),
                                       height: new Limiter().minMaxLimit(
                                           MediaQuery.of(context).size.width *
-                                              0.15,
+                                              0.10,
                                           40.0,
                                           70.0), //new Percent(context).fromPersentHeightMax(0.1, 60),
                                       child: InkWell(
@@ -274,12 +274,12 @@ class _LoginViewState extends State<LoginView> {
                                       fit: BoxFit.cover,
                                       width: new Limiter().minMaxLimit(
                                           MediaQuery.of(context).size.width *
-                                              0.15,
+                                              0.10,
                                           40.0,
                                           70.0),
                                       height: new Limiter().minMaxLimit(
                                           MediaQuery.of(context).size.width *
-                                              0.15,
+                                              0.10,
                                           40.0,
                                           70.0),
                                       child: InkWell(

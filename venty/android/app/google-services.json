@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "839198793708",
+    "firebase_url": "https://ventyapi.firebaseio.com",
+    "project_id": "ventyapi",
+    "storage_bucket": "ventyapi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839198793708:android:d9088feda1227bf8",
+        "android_client_info": {
+          "package_name": "com.venty.ventyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839198793708-idaddv9jpq212ic1ntbd5tpui9pcd5h9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPp3Puf0yNeNOvCqD5T0ligoiCQU-nxT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839198793708-idaddv9jpq212ic1ntbd5tpui9pcd5h9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

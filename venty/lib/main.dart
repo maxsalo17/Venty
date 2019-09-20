@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:venty/pages/addEventView/addEventView.dart';
+import 'package:venty/pages/profileview/profileview.dart';
 import 'package:venty/tools/theme.dart';
 import 'pages/loginview/loginview.dart';
 import 'pages/loginview/registerview.dart';
@@ -27,7 +29,9 @@ class Venty extends StatelessWidget {
       home: LoginView(),
       routes: <String, WidgetBuilder>{
         '/register' : (BuildContext context) => new RegisterView(),
-        '/login' : (BuildContext context) => new LoginView()
+        '/login' : (BuildContext context) => new LoginView(),
+        '/create-event' : (BuildContext context) => new AddEventView(),
+        '/profile': (BuildContext context) => new Profile(),
       }
     );
   }

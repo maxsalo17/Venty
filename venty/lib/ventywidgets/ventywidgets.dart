@@ -37,6 +37,10 @@ RoundedImage(this.width,this.height,this.image);
 
 
 class PopUp extends StatelessWidget{
+
+  Function onCreate;
+
+  PopUp({this.onCreate});
   @override
   Widget build(BuildContext context) {
     return new AlertDialog(
@@ -59,7 +63,9 @@ class PopUp extends StatelessWidget{
                 ),
                 
               ),
-              onPressed: (){},
+              onPressed:(){Navigator.pop(context);
+              onCreate();
+              },
             ),
             new FlatButton(
               child: new Text(

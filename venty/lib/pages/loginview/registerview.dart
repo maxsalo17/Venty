@@ -75,27 +75,20 @@ class _RegisterViewState extends State<RegisterView> {
                              child: Container(
                                width: MediaQuery.of(context).size.width,
                       height: 40,
-                      child: new Image(
-                        image: new AssetImage("images/VentyMainLogo.png"),
-                        
-                      ),
+                      child:new Text(
+                          "SIGN UP!",
+                          style: new TextStyle(
+                              fontFamily: "Segoe UI",
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: Color.fromRGBO(49, 40, 56, 0.8)),
+                        ),
                     ),
                   ),
                   Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        new Text(
-                          "SIGN UP!",
-                          style: new TextStyle(
-                              fontFamily: "Segoe UI",
-                              fontWeight: FontWeight.w600,
-                              fontSize: 40,
-                              color: Color.fromRGBO(49, 40, 56, 0.8)),
-                        ),
-                        new SizedBox(
-                      height: MediaQuery.of(context).size.height*0.05,
-                    ),
                     Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 50.0, vertical: 20.0),

@@ -1,3 +1,4 @@
+import 'package:venty/pages/addEventView/addEventView.dart';
 import 'package:venty/ventywidgets/ventywidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:venty/ventywidgets/carousel_slider.dart';
@@ -149,7 +150,7 @@ class Profile extends StatelessWidget {
                         onPressed: () {
           showDialog(
             context: context,
-            builder: (BuildContext context) => PopUp()
+            builder: (BuildContext context) => PopUp(onCreate: (){Navigator.pushNamed(context, '/create-event');},)
           );
           // Perform some action
         },

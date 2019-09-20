@@ -1,4 +1,4 @@
-package com.example.venty;
+package com.venty.venty;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
