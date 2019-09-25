@@ -12,6 +12,7 @@ import 'package:flutter/services.dart';
 
 void main() => runApp(Venty());
 
+
 void _portraitModeOnly() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
