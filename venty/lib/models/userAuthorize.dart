@@ -14,28 +14,7 @@ class UserAuthentication{
     confirmPassword = "",
     error = _error;
 
-  FormData getRegisterData(){
-    var data = new FormData.from(
-      {
-        "Email":email,
-        "Password":password,
-        "ConfirmPassword":confirmPassword,
-      }
-    );
-    return data;
-
-  }
-
-   FormData getAutorizationData(){
-    var data = new FormData.from(
-      {
-        "grant_type": 'password',
-        "username":email,
-        "password":password,
-      }
-    );
-    return data;
-  }
+  
     
     
 }

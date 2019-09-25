@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:venty/pages/addEventView/addEventView.dart';
+import 'package:venty/pages/eventsHomePage/eventsPageMain.dart';
 import 'package:venty/pages/profileview/profileview.dart';
 import 'package:venty/tools/theme.dart';
+import 'pages/eventListView/eventListView.dart';
 import 'pages/loginview/loginview.dart';
 import 'pages/loginview/registerview.dart';
 import 'package:flutter/services.dart';
@@ -26,12 +28,14 @@ class Venty extends StatelessWidget {
     return MaterialApp(
     
       debugShowCheckedModeBanner: false,
-      home: LoginView(),
+      home: EventsPage(),
       routes: <String, WidgetBuilder>{
         '/register' : (BuildContext context) => new RegisterView(),
         '/login' : (BuildContext context) => new LoginView(),
         '/create-event' : (BuildContext context) => new AddEventView(),
         '/profile': (BuildContext context) => new Profile(),
+        '/home':(BuildContext context) => new EventsPage(),
+        '/eventslist': (BuildContext context) => new EventsList(),
       }
     );
   }

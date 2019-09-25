@@ -3,7 +3,7 @@ import 'package:venty/tools/theme.dart';
 
 class TimePicker extends StatefulWidget {
   TimeOfDay time;
-  Function onChange;
+  Function(TimeOfDay) onChange;
 
   TimePicker({this.time, this.onChange});
   @override
@@ -12,7 +12,7 @@ class TimePicker extends StatefulWidget {
 
 class _TimePickerState extends State<TimePicker> {
   TimeOfDay _currentTime;
-  
+
   _setTime(TimeOfDay) {
     setState(() {
       _currentTime = TimeOfDay;
@@ -24,10 +24,8 @@ class _TimePickerState extends State<TimePicker> {
 
   _pickTime(BuildContext context) async {
     var _time = await showTimePicker(
-        context: context,
-        initialTime: _currentTime
-        );
-    
+        context: context, initialTime: _currentTime ?? TimeOfDay.now());
+
     if (_time != null) {
       _setTime(_time);
     }
@@ -35,41 +33,60 @@ class _TimePickerState extends State<TimePicker> {
 
   @override
   void initState() {
-    widget.time == null ? _setTime(TimeOfDay.now()) : _setTime(widget.time);
+    //widget.time == null ? _setTime(TimeOfDay.now()) : _setTime(widget.time);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-   return ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(50.0)),
-        child: Container(
-          padding: EdgeInsets.all(0),
-            width: double.infinity,
-            height: 50.0,
-            decoration: BoxDecoration(
-                border: Border.all(
-                    width: 2.0, color: VentyColors.primaryRed.withOpacity(0.8)),
-                borderRadius: BorderRadius.all(Radius.circular(50.0))),
-            child: FlatButton(
-              
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    "${_currentTime.hour} : ${_currentTime.minute}",
-                    style: TextStyle(color: VentyColors.primaryDark),
-                  ),
-                  Icon(Icons.access_time, color: VentyColors.primaryDark,)
-                ],
-              ),
-              onPressed: () {
-                _pickTime(context);
-              },
-              color: Colors.transparent,
-              highlightColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              splashColor: VentyColors.primaryRed,
-            )));
+    return ListTile(
+      leading: Icon(Icons.access_time, color: VentyColors.primaryRed),
+      title: _currentTime == null
+          ? Text('Select event time', style: TextStyle(
+                                              fontSize: 16.0,
+                                              fontFamily: 'Segoe UI',
+                                              fontWeight: FontWeight.w600,
+                                              color: VentyColors.secondaryDark,
+                                          ),)
+          : Text('${_currentTime.hour} : ${_currentTime.minute}', style: TextStyle(
+                                              fontSize: 16.0,
+                                              fontFamily: 'Segoe UI',
+                                              fontWeight: FontWeight.w600,
+                                              color: VentyColors.secondaryDark,
+                                          ),),
+      onTap: () {
+        _pickTime(context);
+      },
+    );
+    //  return ClipRRect(
+    //       borderRadius: BorderRadius.all(Radius.circular(50.0)),
+    //       child: Container(
+    //         padding: EdgeInsets.all(0),
+    //           width: double.infinity,
+    //           height: 50.0,
+    //           decoration: BoxDecoration(
+    //               border: Border.all(
+    //                   width: 2.0, color: VentyColors.primaryRed.withOpacity(0.8)),
+    //               borderRadius: BorderRadius.all(Radius.circular(50.0))),
+    //           child: FlatButton(
+
+    //             child: Row(
+    //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //               children: <Widget>[
+    //                 Text(
+    //                   "${_currentTime.hour} : ${_currentTime.minute}",
+    //                   style: TextStyle(color: VentyColors.primaryDark),
+    //                 ),
+    //                 Icon(Icons.access_time, color: VentyColors.primaryDark,)
+    //               ],
+    //             ),
+    //             onPressed: () {
+    //               _pickTime(context);
+    //             },
+    //             color: Colors.transparent,
+    //             highlightColor: Colors.transparent,
+    //             hoverColor: Colors.transparent,
+    //             splashColor: VentyColors.primaryRed,
+    //           )));
   }
 }

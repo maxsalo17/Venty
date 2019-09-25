@@ -128,56 +128,8 @@ class Profile extends StatelessWidget {
                     ),
                   ),
                 ),
-                new Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20.0, right: 20.0),
-                    child: Ink(
-                      
-                      decoration: ShapeDecoration(
-                        color: Colors.black,
-                        shape: CircleBorder(),
-                        shadows: [
-                          BoxShadow(color: Colors.black, blurRadius: 5.0, offset: Offset(5.0, 5.0))
-                        ]
-                      ),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.add,
-                          size: 30,
-                        ),
-                        color: Colors.white,
-                        onPressed: () {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) => PopUp(onCreate: (){Navigator.pushNamed(context, '/create-event');},)
-          );
-          // Perform some action
-        },
-                      ),
-                    ),
-                  ),
-                ),
-                new Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 20.0, left: 20.0),
-                    child: Ink(
-                      decoration: ShapeDecoration(
-                        color: Colors.purple,
-                        shape: CircleBorder(),
-                      ),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.menu,
-                          size: 30,
-                        ),
-                        color: Colors.white,
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
-                ),
+                
+                
               ],
             ),
             Padding(
@@ -332,7 +284,28 @@ class Profile extends StatelessWidget {
             alignment: Alignment.bottomCenter
             ,
             child: new Icon(Icons.arrow_drop_down)),
-        )
+        ),
+        SizedBox(
+            height: 80,
+                      child: AppBar(
+              leading: IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () {
+                
+                },
+              ),
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              actions: <Widget>[
+                IconButton(icon: Icon(Icons.add),onPressed: (){
+                   showDialog(
+                  context: context,
+                  builder: (BuildContext context) => PopUp(onCreate: (){Navigator.pushNamed(context, '/create-event');},)
+                  );
+                },)
+              ],
+            ),
+          )
         ],
       ),
     ));

@@ -26,8 +26,11 @@ class _LoginViewState extends State<LoginView> {
     setBusy(true);
     bloc.autorize(onSuccess: () {
       setBusy(false);
-      Navigator.pushReplacementNamed(context, '/profile');
+      Navigator.pushReplacementNamed(context, '/home');
     }, onError: () {
+      showDialog(context: context, child: Container(
+        child: Text("Something went wrong"),
+      ));
       setBusy(false);
     });
   }
