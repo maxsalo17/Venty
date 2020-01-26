@@ -15,12 +15,15 @@ class MapSelector extends StatefulWidget {
 }
 
 class _MapSelectorState extends State<MapSelector> {
-  List<Marker> _markers;
+  List<Marker> _markers = [];
   List<Address> _address;
   Position _position;
+  LatLng selectedCoordinates;
+  String _error;
   GoogleMapController _controller;
 
   _setMarker(LatLng position) async {
+    selectedCoordinates = position;
     var address = await Geocoder.local.findAddressesFromCoordinates(
         Coordinates(position.latitude, position.longitude));
     setState(() {
@@ -40,18 +43,18 @@ class _MapSelectorState extends State<MapSelector> {
   }
 
   _getCurrentLocation() async {
+    var permission = await Geolocator().checkGeolocationPermissionStatus();
     if (await Geolocator().isLocationServiceEnabled() == false) {
-    } else {
+      setState(() {
+        _error = "Please, enable location service";
+      });
+    } 
+    else {
       var position = await Geolocator()
           .getLastKnownPosition(desiredAccuracy: LocationAccuracy.low);
       setState(() {
-        _position = position;
-        _markers = List<Marker>();
-        _markers.add(Marker(
-            markerId: MarkerId('0'),
-            position: LatLng(position.latitude, position.longitude)));
-      });
-      print('Latitude ${_position.latitude}');
+        _position = position ?? Position(latitude: 0, longitude: 0);
+      print('Latitude ${_position?.latitude}');});
     }
   }
 
@@ -62,10 +65,15 @@ class _MapSelectorState extends State<MapSelector> {
   _submit() {
     if (_address != null && _address.isNotEmpty) {
       Address place = _address[0];
+      String address = "";
+      address += place?.featureName!=null?"${place.featureName}, ":"";
+      address += place?.thoroughfare!=null?"${place.thoroughfare}, ":"";
+      address += place?.locality!=null?"${place.locality}, ":"";
+      address += place?.countryName!=null?"${place.countryName}":"";
       LocationModel locationModel = LocationModel(
-          location: LatLng(_position.latitude, _position.longitude),
+          location: selectedCoordinates,
           address:
-              '${place.featureName}, ${place.thoroughfare}, ${place.locality}, ${place.countryName}');
+              address);
       if (widget.onSubmit != null) widget.onSubmit(locationModel);
     }
   }
@@ -181,7 +189,7 @@ class _MapSelectorState extends State<MapSelector> {
                       child: ListTile(
                         title: Text('Event address:'),
                         subtitle: Text(
-                            '${place.featureName}, ${place.thoroughfare}, ${place.locality}'),
+                            '${place.featureName ?? ""} ${place.thoroughfare ?? ""} ${place.locality ?? ""}'),
                       ),
                     ),
                     Container(

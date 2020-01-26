@@ -38,9 +38,9 @@ class BeautifulButton extends StatelessWidget {
                 width: width * 0.7,
               ),
               Container(
-                child: Icon(icon,color: Colors.white),
+                child: Icon(icon,color: swatchColor),
                 decoration: BoxDecoration(
-                  color: swatchColor,
+                  color: Colors.white,
                 ),
                 height: height,
                 width: width * 0.3,

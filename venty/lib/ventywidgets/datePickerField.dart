@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:venty/tools/constants.dart';
+import 'package:venty/tools/textStyles.dart';
 import 'package:venty/tools/theme.dart';
 
 class DatePicker extends StatefulWidget {
@@ -12,20 +14,6 @@ class DatePicker extends StatefulWidget {
 
 class _DatePickerState extends State<DatePicker> {
   DateTime _currentDate;
-  List<String> monthNames = [
-    "Янв",
-    "Фев",
-    "Мар",
-    "Апр",
-    "Май",
-    "Июл",
-    "Июн",
-    "Авг",
-    "Сен",
-    "Окт",
-    "Ноя",
-    "Дек"
-  ];
 
   _setDate(DateTime) {
     setState(() {
@@ -48,30 +36,6 @@ class _DatePickerState extends State<DatePicker> {
     }
   }
 
-  String _getMonthName(int number, List<String> names) {
-    if (names.isEmpty || names.length < 12) {
-      names = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ];
-    }
-    if (number > 12 || number < 1) {
-      number = 1;
-    }
-
-    return names[number - 1];
-  }
-
   @override
   void initState() {
     //widget.date == null ? _setDate(DateTime.now()) : _setDate(widget.date);
@@ -86,20 +50,10 @@ class _DatePickerState extends State<DatePicker> {
         color: VentyColors.primaryRed,
       ),
       title: _currentDate == null
-          ? Text("Select event date", style: TextStyle(
-                                              fontSize: 16.0,
-                                              fontFamily: 'Segoe UI',
-                                              fontWeight: FontWeight.w600,
-                                              color: VentyColors.secondaryDark,
-                                          ),)
+          ? Text("Select event date", style: TextStyles.tileSubtitleTextDark,)
           : Text(
-              "${_currentDate.day} ${_getMonthName(_currentDate.month, monthNames)} ${_currentDate.year}", style: 
-              TextStyle(
-                                              fontSize: 16.0,
-                                              fontFamily: 'Segoe UI',
-                                              fontWeight: FontWeight.w600,
-                                              color: VentyColors.secondaryDark,
-                                          ),),
+              "${_currentDate.day} ${ConstantTools.getMonthName(_currentDate.month)} ${_currentDate.year}", style: 
+              TextStyles.listTileSubtitle),
       onTap: () {
         _pickDate(context);
       },

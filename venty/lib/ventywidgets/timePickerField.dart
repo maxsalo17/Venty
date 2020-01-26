@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:venty/tools/textStyles.dart';
 import 'package:venty/tools/theme.dart';
 
 class TimePicker extends StatefulWidget {
@@ -42,18 +43,8 @@ class _TimePickerState extends State<TimePicker> {
     return ListTile(
       leading: Icon(Icons.access_time, color: VentyColors.primaryRed),
       title: _currentTime == null
-          ? Text('Select event time', style: TextStyle(
-                                              fontSize: 16.0,
-                                              fontFamily: 'Segoe UI',
-                                              fontWeight: FontWeight.w600,
-                                              color: VentyColors.secondaryDark,
-                                          ),)
-          : Text('${_currentTime.hour} : ${_currentTime.minute}', style: TextStyle(
-                                              fontSize: 16.0,
-                                              fontFamily: 'Segoe UI',
-                                              fontWeight: FontWeight.w600,
-                                              color: VentyColors.secondaryDark,
-                                          ),),
+          ? Text('Select event time', style: TextStyles.tileSubtitleTextDark,)
+          : Text('${_currentTime.hour} : ${_currentTime.minute}', style: TextStyles.listTileSubtitle,),
       onTap: () {
         _pickTime(context);
       },

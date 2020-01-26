@@ -1,8 +1,5 @@
-import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:venty/values/values.dart';
 import '../models/userAuthorize.dart';
 
 class UserApi {
