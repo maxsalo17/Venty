@@ -52,7 +52,7 @@ class _VentyTextFieldState extends State<VentyTextField> {
                                           hintStyle: TextStyle(
                                               color: Color.fromARGB(
                                                   180, 103, 107, 115),
-                                              fontFamily: "Segoe UI",
+                                              fontFamily: "Poppins",
                                               fontSize: 15,
                                               fontWeight: FontWeight.normal),
                                           contentPadding: EdgeInsets.fromLTRB(

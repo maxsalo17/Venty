@@ -26,7 +26,7 @@ class BeautifulButton extends StatelessWidget {
                   text,
                   style: TextStyle(
                     fontSize: 14.0,
-                    fontFamily: 'Segoe UI',
+                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
                     color: VentyColors.primaryDark,
                   ),

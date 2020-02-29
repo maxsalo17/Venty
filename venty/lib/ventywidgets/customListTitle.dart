@@ -30,7 +30,7 @@ class CustomListTitle extends StatelessWidget {
                       text,
                       style: TextStyle(
                           fontSize: 16.0,
-                          fontFamily: 'Segoe UI',
+                          fontFamily: 'Poppins',
                           color: Color.fromRGBO(127, 127, 127, 8.0)),
                     ),
                   ),

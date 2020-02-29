@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 
-class RoundedImage extends StatelessWidget{
+class RoundedImageNetwork extends StatelessWidget{
 double width = 30.0;
 double height =30.0;
 NetworkImage image = Image.network("").image;
 
-RoundedImage(this.width,this.height,this.image);
+RoundedImageNetwork(this.width,this.height,this.image);
 
 @override
   Widget build(BuildContext context){
@@ -57,7 +57,7 @@ class PopUp extends StatelessWidget{
               child: new Text(
                 "Create event",
                 style: new TextStyle(
-                  fontFamily: "Segoe UI",
+                  fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
                   fontSize: 15.0
                 ),
@@ -71,7 +71,7 @@ class PopUp extends StatelessWidget{
               child: new Text(
                 "Add photos",
                 style: new TextStyle(
-                  fontFamily: "Segoe UI",
+                  fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
                   fontSize: 15.0
                 ),
@@ -83,7 +83,7 @@ class PopUp extends StatelessWidget{
               child: new Text(
                 "Change profile photo",
                 style: new TextStyle(
-                  fontFamily: "Segoe UI",
+                  fontFamily: "Poppins",
                   fontWeight: FontWeight.w600,
                   fontSize: 15.0
                 ),

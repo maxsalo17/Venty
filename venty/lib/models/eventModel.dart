@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:venty/models/categoryModel.dart';
+import 'package:venty/models/descriptionBase.dart';
 
 import 'locationModel.dart';
 
@@ -9,7 +10,7 @@ class EventModel {
   DateTime date;
   String time;
   String price;
-  String description;
+  List<DescriptionBase> description;
   String avatar;
   List<String> images;
   Category category;

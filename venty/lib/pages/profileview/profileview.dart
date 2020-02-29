@@ -1,313 +1,243 @@
-import 'package:venty/pages/addEventView/addEventView.dart';
-import 'package:venty/ventywidgets/ventywidgets.dart';
 import 'package:flutter/material.dart';
+import 'package:venty/pages/addEventView/addEventView.dart';
+import 'package:venty/ventywidgets/appBar.dart';
+import 'package:venty/models/eventModel.dart';
+import 'package:venty/tools/textStyles.dart';
+import 'package:venty/tools/theme.dart';
 import 'package:venty/ventywidgets/carousel_slider.dart';
+import 'package:venty/ventywidgets/categoryButton.dart';
+import 'package:venty/ventywidgets/drawer.dart';
+import 'package:venty/ventywidgets/profileEventTile.dart';
+import 'package:venty/ventywidgets/roundedImage.dart';
+import 'package:venty/ventywidgets/ventywidgets.dart';
 
-class Profile extends StatelessWidget {
+class ProfileView extends StatefulWidget {
+  @override
+  _ProfileViewState createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  List<CategoryButton> categories = [
+    CategoryButton(
+      text: "Music",
+      onPressed: () {},
+    ),
+    CategoryButton(
+      text: "Entertainment",
+      onPressed: () {},
+    ),
+    CategoryButton(
+      text: "EDM",
+      onPressed: () {},
+    ),
+    CategoryButton(
+      text: "Food",
+      onPressed: () {},
+    ),
+  ];
+
+  List<EventModel> events = [
+    EventModel(
+        avatar:
+            "https://cdn.dribbble.com/users/3703000/screenshots/6733905/drb_outrun_2c_2x.jpg",
+        name: "Cyberpunk Fun Meeting"),
+    EventModel(
+        avatar:
+            "https://cdn2.lamag.com/wp-content/uploads/sites/6/2019/04/maple-block-food-bowl.jpg",
+        name: "Eatme Food Festival"),
+    EventModel(
+        avatar:
+            "https://cdn25.img.ria.ru/images/150157/80/1501578083_0:0:3500:2396_600x600_80_0_1_c27dd604b44966b6882af3c89afd58e0.jpg",
+        name: "Burning Man 2020"),
+    EventModel(
+        avatar:
+            "https://cdn.dribbble.com/users/3703000/screenshots/6733905/drb_outrun_2c_2x.jpg",
+        name: "Cyberpunk Fun Meeting"),
+    EventModel(
+        avatar:
+            "https://cdn2.lamag.com/wp-content/uploads/sites/6/2019/04/maple-block-food-bowl.jpg",
+        name: "Eatme Food Festival"),
+    EventModel(
+        avatar:
+            "https://cdn25.img.ria.ru/images/150157/80/1501578083_0:0:3500:2396_600x600_80_0_1_c27dd604b44966b6882af3c89afd58e0.jpg",
+        name: "Burning Man 2020"),
+    EventModel(
+        avatar:
+            "https://cdn.dribbble.com/users/3703000/screenshots/6733905/drb_outrun_2c_2x.jpg",
+        name: "Cyberpunk Fun Meeting"),
+    EventModel(
+        avatar:
+            "https://cdn2.lamag.com/wp-content/uploads/sites/6/2019/04/maple-block-food-bowl.jpg",
+        name: "Eatme Food Festival"),
+    EventModel(
+        avatar:
+            "https://cdn25.img.ria.ru/images/150157/80/1501578083_0:0:3500:2396_600x600_80_0_1_c27dd604b44966b6882af3c89afd58e0.jpg",
+        name: "Burning Man 2020")
+  ];
+
+  Widget _buildTileWithShadow({child, borderRadius}) {
+    return Material(
+      shadowColor: VentyColors.conseptDark.withOpacity(0.3),
+      borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+      elevation: 10.0,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+          child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+              ),
+              child: child),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    double currentWidth = MediaQuery.of(context).size.width;
-    double currentHeight = MediaQuery.of(context).size.height;
-    return new MaterialApp(
-      debugShowCheckedModeBanner: false,
-        home: new Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: new Stack(
+    return Scaffold(
+      drawer: DrawerView(),
+      body: Stack(
         children: <Widget>[
-          new Stack(
-              children: <Widget>[
-                new Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            new Stack(
-              children: <Widget>[
-                new Container(
-                  decoration: new BoxDecoration(boxShadow: [
-                    new BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
-                        offset: Offset(0.0, 5.0),
-                        blurRadius: 15.0)
-                  ]),
-                  child: new CarouselSlider(
-                    viewportFraction: 1.0,
-                    enableInfiniteScroll: true,
-                    autoPlay: true,
-                    autoPlayCurve: Curves.easeInOutQuint,
-                    autoPlayInterval: Duration(seconds: 3),
-                    autoPlayAnimationDuration: Duration(milliseconds: 1700),
-                    height: currentHeight * 0.45,
-                    items: <Widget>[
-                      new Image.network(
-                          "https://i.ytimg.com/vi/NTKYDVcfsuc/maxresdefault.jpg",
-                          fit: BoxFit.cover,
-                          width: currentWidth),
-                      new Image.network(
-                        "https://www.residentadvisor.net/images/events/flyer/0001/1/es-0101-1124277-front.jpg",
-                        fit: BoxFit.cover,
-                        width: currentWidth,
-                      ),
-                      new Image.network(
-                        "https://d3vhc53cl8e8km.cloudfront.net/hello-staging/wp-content/uploads/2018/03/08041044/Vy90asbxEd2vBcHlNMDaq3Z7iaEQrkZJaxwPoYU1-972x597.jpeg",
-                        fit: BoxFit.cover,
-                        width: currentWidth,
-                      ),
-                      new Image.network(
-                        "http://muzonov.net/uploads/posts/2018-04/medium/1524204951_qnu7bea-roc.jpg",
-                        fit: BoxFit.cover,
-                        width: currentHeight,
-                      )
-                    ],
-                  ),
-                ),
-                new Container(
-                  height: currentHeight * 0.45,
-                  width: currentWidth,
-                  decoration: new BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                        Colors.transparent,
-                        Color.fromRGBO(0, 0, 0, 0.8)
-                      ])),
-                ),
-                new Container(
-                  height: currentHeight * 0.45,
-                  child: new Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 40.0),
-                      height: currentWidth * 0.25,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: new RoundedImage(
-                                currentWidth * 0.25,
-                                currentWidth * 0.25,
-                                new Image.network(
-                                        "https://www.mr-online.nl/wp-content/uploads/2017/09/22-sep-Garrix-v2.jpg")
-                                    .image),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: new Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  new Text(
-                                    "Martin Garrix",
-                                    style: new TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 30,
-                                        color: Colors.white.withOpacity(0.8)),
-                                  ),
-                                  new Text(
-                                    "Amsterdam, Netherlands",
-                                    style: new TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontWeight: FontWeight.normal,
-                                        fontSize: 17,
-                                        color: Colors.white.withOpacity(0.8)),
-                                  ),
-                                  new Text(
-                                    "21 years old",
-                                    style: new TextStyle(
-                                        fontFamily: "Segoe UI",
-                                        fontWeight: FontWeight.w200,
-                                        fontSize: 15,
-                                        color: Colors.white.withOpacity(0.8)),
-                                  )
-                                ]),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                
-                
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: new Stack(
-                children: <Widget>[
-                  new Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 30.0),
-                        child: new Column(
-                          children: <Widget>[
-                            new Text(
-                              "8.3m",
-                              style: new TextStyle(
-                                  fontFamily: "Segoe UI",
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color.fromRGBO(103, 107, 99, 1)),
-                            ),
-                            new Text(
-                              "Followers",
-                              style: new TextStyle(
-                                  fontFamily: "Segoe UI",
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w200,
-                                  color: Color.fromRGBO(103, 107, 99, 1)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  new Align(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        child: new Column(
-                          children: <Widget>[
-                            new Text(
-                              "37",
-                              style: new TextStyle(
-                                  fontFamily: "Segoe UI",
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color.fromRGBO(103, 107, 99, 1)),
-                            ),
-                            new Text(
-                              "Active",
-                              style: new TextStyle(
-                                  fontFamily: "Segoe UI",
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w200,
-                                  color: Color.fromRGBO(103, 107, 99, 1)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  new Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 30.0),
-                        child: new Column(
-                          children: <Widget>[
-                            new Text(
-                              "67",
-                              style: new TextStyle(
-                                  fontFamily: "Segoe UI",
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color.fromRGBO(103, 107, 99, 1)),
-                            ),
-                            new Text(
-                              "Visited",
-                              style: new TextStyle(
-                                  fontFamily: "Segoe UI",
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w200,
-                                  color: Color.fromRGBO(103, 107, 99, 1)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            new SizedBox(
-      height: 1.0,
-      child: Center(
-        child: Container(
-          height: 0.0,
-          margin: EdgeInsetsDirectional.only(start: 40.0, end: 40.0),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(width: 0.5, color:Color.fromRGBO(58, 59, 66, 10.4) ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.45,
+            child: Image.network(
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzAiQu6W5puFkwQmrkgCgAps4M91ZKWsUm_NJ_bVWKJ1Z4Aclh&s",
+              fit: BoxFit.cover,
             ),
           ),
-        ),
-      ),
-    ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: new Column(
-                children: <Widget>[
-                  Container(
-                    height: currentHeight*0.35,
-                    child: ListView(
-                      
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(20.0),
-                      children: <Widget>[
-                        const Text(
-                          'About me',
-                          style: TextStyle(
-                              fontFamily: "Segoe UI",
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              color: Color.fromRGBO(58, 59, 66, 0.8)),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Theme(
+              data: ThemeData(accentColor: Colors.transparent),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    InkWell(
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      onTap: () {
+                        print("Tapped");
+                      },
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: (MediaQuery.of(context).size.height * 0.45) - 50,
+                        child: Stack(
+                          children: <Widget>[
+                            IgnorePointer(
+                              child: Padding(
+                                padding: const EdgeInsets.all(14.0),
+                                child: Align(
+                                  alignment: Alignment.bottomCenter,
+                                  child: Container(
+                                    width: 50,
+                                    height: 5,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                        const Text(
-                          "Martin Garrix, is a Dutch DJ and record producer from Amstelveen. His most known singles are \"Animals\", \"In the Name of Love\", and \"Scared to be Lonely\". He was ranked number one on DJ Mag's Top 100 DJs list for three consecutive years (2016, 2017, and 2018).He has performed at music festivals such as Coachella, Electric Daisy Carnival, Ultra Music Festival, Tomorrowland, and Creamfields. In 2014 he headlined the 1st edition of Ultra South Africa making this his first major festival. In the same year he became the youngest DJ to headline 2014 Ultra Music Festival at the age of 17. He was a resident DJ at Spain's Hï Ibiza (2017) and Ushuaïa Ibiza (2016 and 2018). He founded the label Stmpd Rcrds in 2016, months after leaving Spinnin' Records and before signing with Sony Music.",
-                          style: TextStyle(
-                              fontFamily: "Segoe UI",
-                              fontSize: 15,
-                              fontWeight: FontWeight.normal,
-                              color: Color.fromRGBO(123, 128, 140, 1)),
-                        ),
-                      ],
+                      ),
                     ),
-                  )
-                ],
+                    _buildTileWithShadow(
+                        borderRadius: 50.0,
+                        child: Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text("Andrew Marenich",
+                                      style: TextStyles.profileTextHeaderDark),
+                                      IconButton(icon: Icon(Icons.add),onPressed: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>AddEventView()));
+                                      },)
+                                ],
+                              ),
+                              Text("Ukraine, Kyiv",
+                                  style: TextStyles.primaryDarkH2Text),
+                              SizedBox(height: 20),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 8.0, horizontal: 35.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        Text("75",
+                                            style: TextStyles
+                                                .profileFollowersText),
+                                        Text("Followers",
+                                            style: TextStyles.darkH2Text),
+                                      ],
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        Text("255",
+                                            style: TextStyles
+                                                .profileFollowersText),
+                                        Text("Following",
+                                            style: TextStyles.darkH2Text),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              Text(
+                                  "25 year old - i am fucking bitch, and i want to get some incredible skills in flutter or show you my cool app that has been created by me and Max. ",
+                                  style: TextStyles.profileDarkH2Text),
+                              SizedBox(height: 20),
+                              Text("Preffered categories",
+                                  style: TextStyles.profileDarkH2Text),
+                              SizedBox(height: 20),
+                              Wrap(
+                                children: categories
+                                    .map((c) => Padding(
+                                          padding: EdgeInsets.all(4),
+                                          child: c,
+                                        ))
+                                    .toList(),
+                              ),
+                              SizedBox(height: 20),
+                              Text("Events",
+                                  style: TextStyles.profileH2DarkText),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: events
+                                    .map((e) => ProfileEventTile(event: e))
+                                    .toList(),
+                              ),
+                              SizedBox(height: 60.0,)
+                            ],
+                          ),
+                        )),
+                        
+                  ],
+                ),
               ),
             ),
-            
-          ],
-                )
-              ],
-            ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Align(
-            alignment: Alignment.bottomCenter
-            ,
-            child: new Icon(Icons.arrow_drop_down)),
-        ),
-        SizedBox(
-            height: 80,
-                      child: AppBar(
-              leading: IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () {
-                
-                },
-              ),
-              backgroundColor: Colors.transparent,
-              elevation: 0.0,
-              actions: <Widget>[
-                IconButton(icon: Icon(Icons.add),onPressed: (){
-                   showDialog(
-                  context: context,
-                  builder: (BuildContext context) => PopUp(onCreate: (){Navigator.pushNamed(context, '/create-event');},)
-                  );
-                },)
-              ],
-            ),
-          )
+          ),
+          // Align(
+          //   alignment: Alignment.topCenter,
+          //   child: VentyAppBar(title: "Andrew Marenich",),
+          // )
         ],
       ),
-    ));
+    );
   }
 }

@@ -47,7 +47,7 @@ class _DrawerViewState extends State<DrawerView> {
                           'Andrew_McTraher',
                           style: TextStyle(
                               color: Colors.white,
-                              fontFamily: 'Segoe UI',
+                              fontFamily: 'Poppins',
                               fontSize: 15.0),
                         ),
                       )

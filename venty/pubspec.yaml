@@ -30,8 +30,8 @@ dependencies:
   google_maps_flutter:
   flutter_image: ^3.0.0
   image_picker:
-  carousel_pro: 
-  carousel_slider: 
+  carousel_pro: ^1.0.0
+  carousel_slider: ^1.4.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -63,16 +63,19 @@ flutter:
   uses-material-design: true
   
   fonts:
-    - family: Segoe UI
+    - family: Poppins
       fonts:
-        - asset: assets/fonts/segoeuiregular.ttf
-        - asset: assets/fonts/segoeuibold.ttf
+        - asset: assets/fonts/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Roboto-Black.ttf
           weight: 700
-        - asset: assets/fonts/segoeuilight.ttf
+        - asset: assets/fonts/Roboto-Thin.ttf
           weight: 100
-        - asset: assets/fonts/segoeuisemibold.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
           weight: 600
-        - asset: assets/fonts/segoeuisemilight.ttf
+        - asset: assets/fonts/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Roboto-Light.ttf
           weight: 200
     
   assets: 
@@ -84,7 +87,13 @@ flutter:
    - images/GoogleIcon.png
    - images/VentyMainLogo.png
    - images/Pin.png
+   - images/textTitled.png
+   - images/textEnum.png
+   - images/youtubeItem.png
+   - images/VLogo_blue.png
+   - images/VSplash_humans.png
 
+   
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

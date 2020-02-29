@@ -26,5 +26,5 @@ class ConstantTools{
     return monthes[month];
   }
 
-  static double itemIconSize = 24;
+  static double itemIconSize = 16.0;
 }

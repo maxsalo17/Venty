@@ -138,7 +138,7 @@ class _LoginViewState extends State<LoginView> {
                                         style: TextStyle(
                                             color: VentyColors.secondaryRed,
                                             fontSize: 14,
-                                            fontFamily: "Segoe UI",
+                                            fontFamily: "Poppins",
                                             fontWeight: FontWeight.w200)),
                                     onPressed: () {}),
                               )
@@ -178,7 +178,7 @@ class _LoginViewState extends State<LoginView> {
                                             style: TextStyle(
                                                 color: Colors.white70,
                                                 fontSize: 14,
-                                                fontFamily: "Segoe UI",
+                                                fontFamily: "Poppins",
                                                 fontWeight: FontWeight.w200)),
                                         onPressed: authorize),
                                   ),
@@ -201,7 +201,7 @@ class _LoginViewState extends State<LoginView> {
                                               color:
                                                   Color.fromRGBO(49, 40, 56, 1),
                                               fontSize: 14,
-                                              fontFamily: "Segoe UI",
+                                              fontFamily: "Poppins",
                                               fontWeight: FontWeight.normal)),
                                       onPressed: () => Navigator.of(context)
                                           .popAndPushNamed('/register')),
@@ -225,7 +225,7 @@ class _LoginViewState extends State<LoginView> {
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 230, 230, 230),
                                     fontSize: 17,
-                                    fontFamily: "Segoe UI",
+                                    fontFamily: "Poppins",
                                     fontWeight: FontWeight.w200)),
                           ),
                           Row(

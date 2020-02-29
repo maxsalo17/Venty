@@ -52,7 +52,7 @@ class _EventsPageState extends State<EventsPage> {
                   child: Text(
                     "TOMMOROWLAND",
                     style: TextStyle(
-                      fontFamily: 'Segoe UI',
+                      fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,
                       fontSize: 25.0,
                       color: Colors.white.withOpacity(0.9),
@@ -74,7 +74,7 @@ class _EventsPageState extends State<EventsPage> {
                   child: Text(
                     'Belgium, 24 April',
                     style: TextStyle(
-                      fontFamily: 'Segoe UI',
+                      fontFamily: 'Poppins',
                       fontSize: 18.0,
                       color: Colors.white.withOpacity(0.9),
                     ),
@@ -168,7 +168,7 @@ class CustomListTitle1 extends StatelessWidget {
                     text,
                     style: TextStyle(
                         fontSize: 13.0,
-                        fontFamily: 'Segoe UI',
+                        fontFamily: 'Poppins',
                         color: Color.fromRGBO(127, 127, 127, 8.0)),
                   ),
                 ),
@@ -180,7 +180,7 @@ class CustomListTitle1 extends StatelessWidget {
                   child: Text(text1,
                       style: TextStyle(
                         fontSize: 13.0,
-                        fontFamily: 'Segoe UI',
+                        fontFamily: 'Poppins',
                       )),
                 ),
               ),

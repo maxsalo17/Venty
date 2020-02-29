@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class MaterialTile extends StatefulWidget {
   final Widget child;
-  final double padding;
+  final EdgeInsets padding;
   final double borderRadius;
 
-  MaterialTile({@required this.child, this.padding=12, this.borderRadius=20});
+  MaterialTile({@required this.child, this.padding, this.borderRadius = 20});
   @override
   _MaterialTileState createState() => _MaterialTileState();
 }
@@ -14,7 +14,7 @@ class _MaterialTileState extends State<MaterialTile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(widget.padding),
+        padding: widget.padding ?? EdgeInsets.all(8.0),
         child: Material(
             borderRadius:
                 BorderRadius.all(Radius.circular(widget.borderRadius)),

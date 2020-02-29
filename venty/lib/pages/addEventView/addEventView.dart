@@ -5,8 +5,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:latlong/latlong.dart';
 import 'package:venty/bloc/createEventBloc.dart';
+import 'package:venty/bloc/descriptionBloc.dart';
 import 'package:venty/models/categoryModel.dart';
 import 'package:venty/models/locationModel.dart';
+import 'package:venty/pages/addDescriptionView/addDescription.dart';
 import 'package:venty/tools/textStyles.dart';
 import 'package:venty/tools/theme.dart';
 import 'package:venty/ventywidgets/GradientButton.dart';
@@ -46,10 +48,16 @@ class _AddEventViewState extends State<AddEventView> {
   }
 
   _setEvent() async {
-    bool res = await bloc.setEvent();
-    res;
-    if (res == true) {
-      Navigator.pop(context);
+    var event = bloc.setEvent();
+    if (event != null) {
+      var res = await Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return AddDescriptionView(
+          bloc: DescriptionBloc(event: event),
+        );
+      }));
+      if(res==true){
+        Navigator.pop(context);
+      }
     }
   }
 
@@ -246,8 +254,7 @@ class _AddEventViewState extends State<AddEventView> {
                                                         snapshot.data.address,
                                                         style: TextStyle(
                                                           fontSize: 15.0,
-                                                          fontFamily:
-                                                              'Segoe UI',
+                                                          fontFamily: 'Poppins',
                                                           fontWeight:
                                                               FontWeight.w200,
                                                           color: Colors.white,
@@ -491,7 +498,7 @@ class _AddEventViewState extends State<AddEventView> {
                   'Submit event?',
                   style: TextStyle(
                     fontSize: 22.0,
-                    fontFamily: 'Segoe UI',
+                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
                     color: VentyColors.primaryDark,
                   ),
@@ -506,7 +513,7 @@ class _AddEventViewState extends State<AddEventView> {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
-                                fontFamily: "Segoe UI",
+                                fontFamily: "Poppins",
                                 fontWeight: FontWeight.w600)),
                         width: 140,
                         gradient: new LinearGradient(
@@ -532,7 +539,7 @@ class _AddEventViewState extends State<AddEventView> {
                                 style: TextStyle(
                                     color: VentyColors.primaryDark,
                                     fontSize: 20,
-                                    fontFamily: "Segoe UI",
+                                    fontFamily: "Poppins",
                                     fontWeight: FontWeight.w600)),
                             onPressed: () {
                               Navigator.pop(context);

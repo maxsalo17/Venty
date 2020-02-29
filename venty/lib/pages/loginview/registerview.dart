@@ -78,7 +78,7 @@ class _RegisterViewState extends State<RegisterView> {
                       child:new Text(
                           "SIGN UP!",
                           style: new TextStyle(
-                              fontFamily: "Segoe UI",
+                              fontFamily: "Poppins",
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
                               color: Color.fromRGBO(49, 40, 56, 0.8)),
@@ -140,7 +140,7 @@ class _RegisterViewState extends State<RegisterView> {
                                   style: TextStyle(
                                       color: Colors.white70,
                                       fontSize: 16,
-                                      fontFamily: "Segoe UI",
+                                      fontFamily: "Poppins",
                                       fontWeight: FontWeight.w200)),
                               onPressed: register),
                         ),

@@ -110,7 +110,7 @@ class CreateEventBloc {
     return isValid;
   }
 
-  Future<bool> setEvent() async {
+  Future<CreateEventModel> setEvent() async {
     if (_validate()) {
       event = CreateEventModel(
           name: _nameController.stream.value,
@@ -118,21 +118,11 @@ class CreateEventBloc {
           date: _dateController.stream.value,
           time: _timeController.stream.value,
           price: _priceController.stream.value,
-          description: _descriptionController.stream.value,
           avatar: _avatarController.stream.value,
           images: _imagesController.stream.value,
           category: _categoryController.stream.value);
-
-      _isLoadingController.sink.add(true);
-      var res = await EventApi().postEvent(event);
-      _isLoadingController.sink.add(false);
-      if(res is String){
-        _errorController.sink.add("$res");
-        return false;
-      }
-      else{
-        return res;
-      }
+      
+      return event;
     }
   }
 

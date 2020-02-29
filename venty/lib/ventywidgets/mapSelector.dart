@@ -157,7 +157,7 @@ class _MapSelectorState extends State<MapSelector> {
               style: TextStyle(
                   fontSize: 10,
                   color: VentyColors.primaryDark,
-                  fontFamily: "Segoe UI",
+                  fontFamily: "Poppins",
                   fontWeight: FontWeight.normal,
                   decoration: TextDecoration.none),
             ),

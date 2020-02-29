@@ -58,6 +58,7 @@ class AnimatedMapState extends State<AnimatedMap> {
   @override
   Widget build(BuildContext context) {
     return GoogleMap(
+      padding: EdgeInsets.only(top: 50),
       markers: Set<Marker>.from(_markers),
       mapType: MapType.normal,
       initialCameraPosition: _kGooglePlex,
